@@ -41,3 +41,51 @@ document.addEventListener('DOMContentLoaded', () => {
     },
 
     // Sport Watch
+    {
+      name: 'Sport Watch',
+      price: '55.000 BHD',
+      images: ['images/KZsyaAvHHwiHeLmZLYzCv.jpeg'], // watch close-up
+      desc: 'Water-resistant sports watch with timer features.'
+    }
+  ];
+
+  const productGrid = document.getElementById('productGrid');
+  const modal = document.getElementById('quickViewModal');
+  const modalBody = document.getElementById('modalBody');
+  const closeModal = document.getElementById('closeModal');
+
+  // clear any existing content (if re-running)
+  productGrid.innerHTML = '';
+
+  // populate grid
+  products.forEach((p,i)=>{
+    const card = document.createElement('div');
+    card.className='product-card';
+    card.innerHTML = `
+      <img src='${p.images[0]}' alt='${p.name}' />
+      <div class='info'>
+        <h3>${p.name}</h3>
+        <div class='price'>${p.price}</div>
+        <button data-index='${i}' class='quick-view'>Quick View</button>
+      </div>
+    `;
+    productGrid.appendChild(card);
+  });
+
+  // delegate click for quick view (works for dynamic content)
+  productGrid.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.quick-view');
+    if(!btn) return;
+    const index = btn.getAttribute('data-index');
+    const prod = products[index];
+    let imagesHtml = prod.images.map(img => `<img src='${img}' alt='${prod.name}' />`).join('');
+    modalBody.innerHTML = `${imagesHtml}<h2>${prod.name}</h2><div class='price'>${prod.price}</div><p>${prod.desc}</p><button class='btn-primary'>Add to Cart</button>`;
+    modal.style.display='flex';
+    modal.setAttribute('aria-hidden','false');
+  });
+
+  // close modal
+  closeModal.addEventListener('click', close);
+  modal.addEventListener('click', (e)=>{ if(e.target === modal) close(); });
+  function close(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
+});
