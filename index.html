@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Sports.bh - Shop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">Sports.bh</div>
+      <nav class="nav">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container product-list">
+    <h1>Shop Products</h1>
+    <div class="grid" id="productGrid">
+      <!-- Products populated by script.js -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      ©️ Sports.bh — All rights reserved
+    </div>
+  </footer>
+
+  <!-- Quick View Modal -->
+  <div id="quickViewModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button id="closeModal" class="modal-close" aria-label="Close">×</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Dynamic content -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
